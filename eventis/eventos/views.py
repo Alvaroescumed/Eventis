@@ -1,4 +1,4 @@
-from rest_framework import generics, filters
+from rest_framework import generics
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
@@ -62,3 +62,35 @@ class ArtisEventsList(APIView):
     
 # Creamos la view para la compra de entradas
 
+class AddAssitance(APIView):
+
+    #endpoint para inscribirse al evento
+    def post(self, req):
+
+        event_id = req.query_params.get('event_id')
+        user = req.user
+
+        try:
+            event = Event.objects.get(pk=event_id)
+        except Event.DoesNotExist:
+            return Response({'error': 'Este evento no existe...'})
+        
+        assistant, created= Assistants.objects.get_or_create(user=user, event=event)
+
+        if created:
+            return Response({'message': f'Has confirmado tu asistencia al evento {event.name}'})
+        else:
+            return Response({'message': f'Ya estabas registrado para este evento'})
+
+#lista de asistentes para el evento
+class EventAttendeesList(APIView):
+    
+    def get(self, request, event_id):
+        try:
+            event = Event.objects.get(pk=event_id)
+        except Event.DoesNotExist:
+            return Response({'error': 'Evento no encontrado'}, status=404)
+
+        attendees = Assistants.objects.filter(event=event)
+        serializer = AssistantSerializer(attendees, many=True)
+        return Response(serializer.data)

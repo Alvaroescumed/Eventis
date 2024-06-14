@@ -43,11 +43,14 @@ class EventSerializer(serializers.ModelSerializer):
         return value
 
     class Meta:
-        abstract = Event
+        model = Event
         fields = '__all__'
 
     
 class AssistantSerializer(serializers.ModelSerializer):
-     class Meta:
+    class Meta:
         model = Assistants
         fields = '__all__'
+    
+    def get_event_name(self, obj):
+        return obj.event.name if obj.evvent else None

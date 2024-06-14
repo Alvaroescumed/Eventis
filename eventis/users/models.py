@@ -1,6 +1,4 @@
 from django.db import models
-from events.models import Concert, Festival
-import uuid
 
 
 class User(models.Model):

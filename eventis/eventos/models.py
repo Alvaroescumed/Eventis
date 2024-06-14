@@ -19,7 +19,6 @@ class Event(models.Model):
     capacity = models.IntegerField()
     artists = models.ManyToManyField(Artist)
     
-
     def __str__(self):
         return self.name
     
