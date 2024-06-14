@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Concert, Festival, Event, Artist
+from .models import *
 import datetime
 
 class ArtistSerializer(serializers.ModelSerializer):
@@ -43,29 +43,11 @@ class EventSerializer(serializers.ModelSerializer):
         return value
 
     class Meta:
-        abstract = True
+        abstract = Event
         fields = '__all__'
 
- # usamos el serializador base para crear los diferenrtes tipos de eventos
     
-class ConcertSerializer(EventSerializer):
-
-    class Meta:
-        model = Concert
+class AssistantSerializer(serializers.ModelSerializer):
+     class Meta:
+        model = Assistants
         fields = '__all__'
-
-class FestivalSerializer(EventSerializer):
-
-    class Meta:
-        model = Festival
-        fields = '__all__'
-
-    # creamos dentro de festival otro validar que nos compruebe que la ficha del final del festival sea superior a la del día que da comienzo
-    def validate(self, data):
-        date = data.get('date')
-        end_date = data.get('end_date')
-
-        if end_date and date and end_date < date:
-            raise serializers.ValidationError('The festival must end after it starts')
-        
-        return data

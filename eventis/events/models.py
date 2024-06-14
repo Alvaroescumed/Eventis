@@ -1,4 +1,6 @@
 from django.db import models
+from users.models import *
+
 
 class Artist(models.Model):
     name = models.CharField(max_length=100)
@@ -8,25 +10,27 @@ class Artist(models.Model):
 
 #creamos un modelo plantilla para los eventos
 class Event(models.Model):
+
     name = models.CharField(max_length=100)
     description = models.TextField(max_length=240)
     date = models.DateField()
+    end_date = models.DateField(blank=True, null=True)  # Solo para festivales
     location = models.CharField(max_length=100)
     capacity = models.IntegerField()
+    artists = models.ManyToManyField(Artist)
     
-
-    class Meta:
-        abstract = True
 
     def __str__(self):
         return self.name
     
 
+# Creamos el modelo de entrada
 
-class Concert(Event):
-   artists = models.ManyToManyField(Artist, related_name='concert')
+    
+class Assistants(models.Model):
 
-class Festival(Event):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    event  = models.ForeignKey('Event', on_delete=models.CASCADE)
 
-    end_date = models.DateField()
-    artists = models.ManyToManyField(Artist, related_name='festival')
+    def __str__(self):
+        return f"{self.user.username} entrada para {self.event.name}"

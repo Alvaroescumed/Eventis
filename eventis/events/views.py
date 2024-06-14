@@ -1,17 +1,11 @@
 from rest_framework import generics, filters
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .models import Concert, Artist, Festival
-from .serializers import ConcertSerializer, ArtistSerializer,FestivalSerializer
+from rest_framework.permissions import IsAuthenticated
+from .models import *
+from .serializers import *
 
-class EventSearch(generics.ListAPIView):
-    filter_backends = [filters.SearchFilter]
-    search_filds = ['name']
-
-class EventOrder(generics.ListAPIView):
-    filter_backends = [filters.OrderingFilter]
-    search_filds = ['date']
-
+ 
 # ----- Artist -----------
 
 class ArtistListCreate(generics.ListCreateAPIView):
@@ -24,68 +18,26 @@ class ArtistRetriveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
 
 # ----- Concerts ---------
 
-class ConcertsListCreate(generics.ListCreateAPIView):
-    queryset = Concert.objects.all()
-    serializer_class = ConcertSerializer
+class EventsListCreate(generics.ListCreateAPIView):
+    queryset = Event.objects.all()
+    serializer_class = EventSerializer
 
-class ConcertsRetriveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Concert.objects.all()
-    serializer_class = ConcertSerializer
+class EventsRetriveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Event.objects.all()
+    serializer_class = EventSerializer
 
-class ConcertsSearch(EventSearch):
-    queryset = Concert.objects.all()
-    serializer_class= ConcertSerializer
 
-class ConcertsOrder(EventOrder):
-    queryset = Concert.objects.all()
-    serializer_class= ConcertSerializer
-
-# ------ Festivals -------
-
-class FestivalsListCreate(generics.ListCreateAPIView):
-    queryset = Festival.objects.all()
-    serializer_class = FestivalSerializer
-
-class FestivalsRetriveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Festival.objects.all()
-    serializer_class = FestivalSerializer
-
-class FestivalsSearch(EventSearch):
-    queryset = Festival.objects.all()
-    serializer_class= FestivalSerializer
-
-class FestivalsOrder(EventOrder):
-    queryset = Festival.objects.all()
-    serializer_class= FestivalSerializer
-
-# ---- API Views --------
-
-class EventsList(APIView):
-
-    def get(self, req):
-        concerts = Concert.objects.all()
-        festivals = Festival.objects.all()
-
-        concerts_serializer = ConcertSerializer(concerts, many=True)
-        festivals_serializer = FestivalSerializer(festivals,many=True)
-
-        response_data = concerts_serializer.data + festivals_serializer.data
-
-        return Response(response_data)
+# ---- API Views ------
     
 class EventsLocationList(APIView):
 
     # traemos por parametro la localizacion en la que queremos filtar los eventos
     def get(self, req, location): 
 
-        concerts = Concert.objects.filter(location__icontains = location)
-        festivals = Festival.objects.filter(artists__name__icontains = location)
+        events = Event.objects.filter(events__location__icontains = location)
 
-        concerts_serializer = ConcertSerializer(concerts, many=True)
-        festivals_serializer = FestivalSerializer(festivals, many=True)      
-
-
-        response_data = concerts_serializer.data + festivals_serializer.data
+        events_serializer = EventSerializer(events, many=True)
+        response_data = events_serializer.data  
 
         #En caso de que no haya un evento en la ciudad deseada nos mostrara un mensaje avisando al usuario
         if not response_data:
@@ -98,14 +50,15 @@ class ArtisEventsList(APIView):
     # tomamos la misma mecanica que en la anterior view cambiando la localizacion por el artista deseado
     def get(self, req, name): 
 
-        concerts = Concert.objects.filter(artists__name__icontains = name)
-        festivals = Festival.objects.filter(artists__name__icontains = name)
+        events = Event.objects.filter(artists__name__icontains = name)
 
-        concerts_serializer = ConcertSerializer(concerts, many=True)
-        festivals_serializer = FestivalSerializer(festivals, many=True)      
+        events_serializer = EventSerializer(events, many=True)
+        response_data = events_serializer.data
 
-        response_data = concerts_serializer.data + festivals_serializer.data
-        if not response_data:
+        if not  response_data:
             response_data = 'Por ahora este artista no tiene eventos :('
 
         return Response ({f"{name} eventos": response_data})
+    
+# Creamos la view para la compra de entradas
+
