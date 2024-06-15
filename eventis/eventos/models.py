@@ -32,4 +32,4 @@ class Assistants(models.Model):
     event  = models.ForeignKey('Event', on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.user.username} entrada para {self.event.name}"
+        return f"{self.user.name} entrada para {self.event.name}"

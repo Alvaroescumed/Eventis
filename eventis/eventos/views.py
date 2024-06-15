@@ -65,16 +65,21 @@ class ArtisEventsList(APIView):
 class AddAssitance(APIView):
 
     #endpoint para inscribirse al evento
-    def post(self, req):
+    def post(self, request):
 
-        event_id = req.query_params.get('event_id')
-        user = req.user
+        event_id = request.headers.get('event_id')
+        user = request.user
 
         try:
-            event = Event.objects.get(pk=event_id)
+            event = Event.objects.get(id=event_id)
         except Event.DoesNotExist:
             return Response({'error': 'Este evento no existe...'})
         
+        #Revisamos el aforo que tiene el evento
+        current_tickets = Assistants.objects.filter(event=event).count()
+        if current_tickets >= event.capacity:
+            return Response({'error': 'El aforo está completo...'})
+
         assistant, created= Assistants.objects.get_or_create(user=user, event=event)
 
         if created:
@@ -85,11 +90,11 @@ class AddAssitance(APIView):
 #lista de asistentes para el evento
 class EventAttendeesList(APIView):
     
-    def get(self, request, event_id):
+    def get(self, req, event_id):
         try:
-            event = Event.objects.get(pk=event_id)
+            event = Event.objects.get(id=event_id)
         except Event.DoesNotExist:
-            return Response({'error': 'Evento no encontrado'}, status=404)
+            return Response({'error': 'Evento no encontrado'})
 
         attendees = Assistants.objects.filter(event=event)
         serializer = AssistantSerializer(attendees, many=True)

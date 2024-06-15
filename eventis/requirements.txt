@@ -2,3 +2,4 @@ django
 djangorestframework
 requests
 mysqlclient
+rest_authtoken

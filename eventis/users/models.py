@@ -9,4 +9,4 @@ class User(models.Model):
     phone = models.CharField(max_length=10)
 
     def __str__(self):
-        return self.name
+        return f'{self.name}-{self.lastname}'
