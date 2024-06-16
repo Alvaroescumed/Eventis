@@ -35,7 +35,7 @@ class EventsRetriveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
 class EventsLocationList(APIView):
 
     # traemos por parametro la localizacion en la que queremos filtar los eventos
-    def get(self, req, location): 
+    def get(self, request, location): 
 
         events = Event.objects.filter(location = location)
 
@@ -51,9 +51,9 @@ class EventsLocationList(APIView):
 class ArtisEventsList(APIView):
     
     # tomamos la misma mecanica que en la anterior view cambiando la localizacion por el artista deseado
-    def get(self, req, name): 
+    def get(self, request, name): 
 
-        events = Event.objects.filter(artists__name__icontains = name)
+        events = Event.objects.filter(artists__name = name)
 
         events_serializer = EventSerializer(events, many=True)
         response_data = events_serializer.data
