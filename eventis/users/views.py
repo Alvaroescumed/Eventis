@@ -1,11 +1,12 @@
-from rest_framework import generics, permissions, authentication
+from rest_framework import generics
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import User
 from .serializers import * 
-from eventos.models  import Assistants
-from eventos.serializers  import AssistantSerializer
+from eventos.models  import Ticket
+from eventos.serializers  import TicketSerializer
 
+# Creamos las views CRUD para user
 class UserListCreate(generics.ListCreateAPIView):
     queryset = User.objects.all()
     serializer_class = userSerializer
@@ -14,13 +15,14 @@ class UserRetriveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = User.objects.all()
     serializer_class = userSerializer
 
+
+# Creamos otra view en la que se muestran los tikets por usuario
+
 class UserTickets(APIView):
 
-    authentication_classes = [authentication.TokenAuthentication]
+    def get(self, request, user_id):
 
-    def get(self, req):
-
-        user = req.user
-        user_ticket= Assistants.objects.filter(user=user)
-        serializer = AssistantSerializer(user_ticket, many=True)
+        user = User.objects.get(id=user_id)
+        user_ticket= Ticket.objects.filter(user=user)
+        serializer = TicketSerializer(user_ticket, many=True)
         return Response(serializer.data)

@@ -3,4 +3,4 @@ from .models import *
 # Register your models here.
 admin.site.register(Event)
 admin.site.register(Artist)
-admin.site.register(Assistants)
+admin.site.register(Ticket)

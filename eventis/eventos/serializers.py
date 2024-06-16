@@ -2,12 +2,13 @@ from rest_framework import serializers
 from .models import *
 import datetime
 
+#Serializamos al modelo artista
 class ArtistSerializer(serializers.ModelSerializer):
     class Meta:
         model = Artist
         fields = '__all__'
 
-# creamos un serializador base para los eventos
+# creamos un serializador para los eventos
 class EventSerializer(serializers.ModelSerializer):
 
     #nos traemos el serializador de artistas ya que esta tabla esta relacionada con los diferentes eventos
@@ -25,7 +26,7 @@ class EventSerializer(serializers.ModelSerializer):
         return event
 
     # definimos una función para que cuando se hagan peticiones gets a los eventos los artistas aparezcan con su nombre y no con ID
-    def to_representation(self, instance):
+    def get_artist_name(self, instance):
         representation = super().to_representation(instance)
         representation['artists'] = [artist.name for artist in instance.artists.all()]
         return representation
@@ -46,14 +47,18 @@ class EventSerializer(serializers.ModelSerializer):
         model = Event
         fields = '__all__'
 
-    
-class AssistantSerializer(serializers.ModelSerializer):
+#Serializamos el ticket
+class TicketSerializer(serializers.ModelSerializer):
 
     user_name = serializers.SerializerMethodField()
+    event_name = serializers.SerializerMethodField()
 
     class Meta:
-        model = Assistants
-        fields = [ 'user_name' ]
+        model = Ticket
+        fields = [ 'user_name', 'event_name' ]
     
     def get_user_name(self, obj):
         return f'{obj.user.name} {obj.user.lastname}'
+    def get_event_name(self, obj):
+        return f'{obj.event.name}'
+                                    

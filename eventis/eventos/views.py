@@ -37,7 +37,7 @@ class EventsLocationList(APIView):
     # traemos por parametro la localizacion en la que queremos filtar los eventos
     def get(self, req, location): 
 
-        events = Event.objects.filter(events__location__icontains = location)
+        events = Event.objects.filter(location = location)
 
         events_serializer = EventSerializer(events, many=True)
         response_data = events_serializer.data  
@@ -65,7 +65,7 @@ class ArtisEventsList(APIView):
     
 # Creamos la view para la compra de entradas
 
-class AddAssitance(APIView):
+class AddTicket(APIView):
 
     #endpoint para inscribirse al evento
     def post(self, request):
@@ -86,7 +86,7 @@ class AddAssitance(APIView):
             return Response({'error': 'Este usuario no existe...'})
         
         #Revisamos el aforo que tiene el evento
-        current_tickets = Assistants.objects.filter(event=event).count()
+        current_tickets = Ticket.objects.filter(event=event).count()
         if current_tickets >= event.capacity:
             return Response({'error': 'El aforo está completo...'})
 
@@ -111,8 +111,8 @@ class EventAttendeesList(APIView):
         except Event.DoesNotExist:
             return Response({'error': 'Evento no encontrado'})
 
-        attendees = Assistants.objects.filter(event=event)
-        serializer = AssistantSerializer(attendees, many=True)
+        tickets = Ticket.objects.filter(event=event)
+        serializer = TicketSerializer(tickets, many=True)
 
         data = { 
             'CONCERT/FESTIVAL': event.name,

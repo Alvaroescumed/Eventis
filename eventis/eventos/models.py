@@ -1,14 +1,14 @@
 from django.db import models
 from users.models import *
 
-
+#creamos un modelo para artistas
 class Artist(models.Model):
     name = models.CharField(max_length=100)
     
     def __str__(self):
         return self.name
 
-#creamos un modelo plantilla para los eventos
+#creamos un modelo para los eventos
 class Event(models.Model):
 
     name = models.CharField(max_length=100)
@@ -23,10 +23,9 @@ class Event(models.Model):
         return self.name
     
 
-# Creamos el modelo de entrada
+# Creamos el modelo de entrada que relaciona usuarios con eventos
 
-    
-class Assistants(models.Model):
+class Ticket(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     event  = models.ForeignKey('Event', on_delete=models.CASCADE)
