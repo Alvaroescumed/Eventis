@@ -1,9 +1,12 @@
 from rest_framework import generics
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated
+from django.core.mail import send_mail
+from django.conf import settings
 from .models import *
 from .serializers import *
+from users.models import User
+
 
  
 # ----- Artist -----------
@@ -67,25 +70,37 @@ class AddAssitance(APIView):
     #endpoint para inscribirse al evento
     def post(self, request):
 
-        event_id = request.headers.get('event_id')
-        user = request.user
+        event_id = request.query_params.get('event_id')
+        user_mail = request.query_params.get('user_mail')
+
+        print(f"id:{event_id} and {user_mail}")
 
         try:
             event = Event.objects.get(id=event_id)
         except Event.DoesNotExist:
             return Response({'error': 'Este evento no existe...'})
         
+        try:
+            user = User.objects.get(mail=user_mail)
+        except Event.DoesNotExist:
+            return Response({'error': 'Este usuario no existe...'})
+        
         #Revisamos el aforo que tiene el evento
         current_tickets = Assistants.objects.filter(event=event).count()
         if current_tickets >= event.capacity:
             return Response({'error': 'El aforo está completo...'})
 
-        assistant, created= Assistants.objects.get_or_create(user=user, event=event)
+        self.send_email_notification(user.mail, user.name, event.name, event.location, event.date)
+        return Response({'message': f'Has confirmado tu asistencia al evento {event.name}'})
 
-        if created:
-            return Response({'message': f'Has confirmado tu asistencia al evento {event.name}'})
-        else:
-            return Response({'message': f'Ya estabas registrado para este evento'})
+        
+    def send_email_notification(self, user_mail, user_name, event_name, event_location, event_date):
+            subject = 'Confirmación de Asistencia'
+            message = f' Hola {user_name}! \n\nHas confirmado tu asistencia al evento {event_name} en {event_location} para el día {event_date}. \n\nEsperamos que disfrutems mucho del concierto!, \nEl equipo de eventis'
+            sender_email = settings.EMAIL_HOST_USER
+            recipient_list = [user_mail]
+
+            send_mail(subject, message, sender_email, recipient_list)
 
 #lista de asistentes para el evento
 class EventAttendeesList(APIView):
@@ -98,4 +113,9 @@ class EventAttendeesList(APIView):
 
         attendees = Assistants.objects.filter(event=event)
         serializer = AssistantSerializer(attendees, many=True)
-        return Response(serializer.data)
+
+        data = { 
+            'CONCERT/FESTIVAL': event.name,
+            'ASISTENTES' : serializer.data
+        }
+        return Response(data)

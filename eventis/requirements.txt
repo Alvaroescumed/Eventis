@@ -3,3 +3,4 @@ djangorestframework
 requests
 mysqlclient
 rest_authtoken
+python-dotenv

@@ -50,13 +50,10 @@ class EventSerializer(serializers.ModelSerializer):
 class AssistantSerializer(serializers.ModelSerializer):
 
     user_name = serializers.SerializerMethodField()
-    event_name = serializers.SerializerMethodField()
+
     class Meta:
         model = Assistants
-        fields = ['id', 'user_name', 'event_name']
+        fields = [ 'user_name' ]
     
     def get_user_name(self, obj):
         return f'{obj.user.name} {obj.user.lastname}'
-
-    def get_event_name(self, obj):
-        return obj.event.name 
