@@ -1,0 +1,960 @@
+[
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$720000$ulILF5de8sz2BXIDXoGCpJ$F0QCN0DesOwlYUnZWqcjn73tfruckPV7Udc6hcg27CU=",
+        "last_login": "2024-06-14T18:34:40.533Z",
+        "is_superuser": true,
+        "username": "alvaro",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2024-06-14T18:34:01.561Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "34jw11o5bq5hekq3d6l9pdy4q57k3alp",
+    "fields": {
+        "session_data": ".eJxVjDsOwjAQBe_iGlneaP2Bkp4zWGvvGgeQI8VJFXF3iJQC2jczb1OR1qXGtcscR1YXBer0uyXKT2k74Ae1-6Tz1JZ5THpX9EG7vk0sr-vh_h1U6vVbm1RywYzg2QIk9AhoyCJLxuIK8xmTA08UgjGBBZw1bihWyIYw-KzeH-oxN8w:1sIBl2:Kt3HSysUoyzhy2ye_Soas5tCgB13ftKlSabKOzurG3k",
+        "expire_date": "2024-06-28T18:34:40.536Z"
+    }
+},
+{
+    "model": "eventos.artist",
+    "pk": 1,
+    "fields": {
+        "name": "Billie Eilish"
+    }
+},
+{
+    "model": "eventos.artist",
+    "pk": 2,
+    "fields": {
+        "name": "The Killers"
+    }
+},
+{
+    "model": "eventos.artist",
+    "pk": 3,
+    "fields": {
+        "name": "The National"
+    }
+},
+{
+    "model": "eventos.artist",
+    "pk": 4,
+    "fields": {
+        "name": "Foo Fighters"
+    }
+},
+{
+    "model": "eventos.artist",
+    "pk": 5,
+    "fields": {
+        "name": "Camellos"
+    }
+},
+{
+    "model": "eventos.artist",
+    "pk": 6,
+    "fields": {
+        "name": "Alcalá Norte"
+    }
+},
+{
+    "model": "eventos.artist",
+    "pk": 7,
+    "fields": {
+        "name": "Charli xcx"
+    }
+},
+{
+    "model": "eventos.artist",
+    "pk": 8,
+    "fields": {
+        "name": "Troye Sivan"
+    }
+},
+{
+    "model": "eventos.artist",
+    "pk": 9,
+    "fields": {
+        "name": "Fractura"
+    }
+},
+{
+    "model": "eventos.artist",
+    "pk": 10,
+    "fields": {
+        "name": "Faced out"
+    }
+},
+{
+    "model": "eventos.artist",
+    "pk": 11,
+    "fields": {
+        "name": "Desorden"
+    }
+},
+{
+    "model": "eventos.artist",
+    "pk": 12,
+    "fields": {
+        "name": "Glitter"
+    }
+},
+{
+    "model": "eventos.artist",
+    "pk": 13,
+    "fields": {
+        "name": "La Vorágine"
+    }
+},
+{
+    "model": "eventos.artist",
+    "pk": 14,
+    "fields": {
+        "name": "Colisión"
+    }
+},
+{
+    "model": "eventos.artist",
+    "pk": 15,
+    "fields": {
+        "name": "Ethel Cain"
+    }
+},
+{
+    "model": "eventos.artist",
+    "pk": 16,
+    "fields": {
+        "name": "Biznaga"
+    }
+},
+{
+    "model": "eventos.artist",
+    "pk": 17,
+    "fields": {
+        "name": "Los Arethas"
+    }
+},
+{
+    "model": "eventos.event",
+    "pk": 1,
+    "fields": {
+        "name": "BBK Live",
+        "description": "Festival de música alternativa con The Killers, Foals, Vampire Weekend y Billie Eilish como cabezas de cartel.",
+        "date": "2024-07-10",
+        "end_date": "2024-07-12",
+        "location": "Bilbao",
+        "capacity": 60000,
+        "artists": [
+            1,
+            2,
+            3,
+            4
+        ]
+    }
+},
+{
+    "model": "eventos.event",
+    "pk": 2,
+    "fields": {
+        "name": "Concierto de Camellos en Sala Barceló",
+        "description": "Concierto del grupo Camellos junto a Alcalá Norte cen la Sala Barceló.",
+        "date": "2024-07-30",
+        "end_date": null,
+        "location": "Madrid",
+        "capacity": 1500,
+        "artists": [
+            5,
+            6
+        ]
+    }
+},
+{
+    "model": "eventos.event",
+    "pk": 3,
+    "fields": {
+        "name": "SWEAT",
+        "description": "Concierto de Charli xcx junto a Troye Sivan en el estadio Wanda Metropolitano.",
+        "date": "2024-07-20",
+        "end_date": null,
+        "location": "Madrid",
+        "capacity": 60000,
+        "artists": [
+            7,
+            8
+        ]
+    }
+},
+{
+    "model": "eventos.event",
+    "pk": 4,
+    "fields": {
+        "name": "Medideterranean Hardcore",
+        "description": "Lo mejor del HxC peninsular unido en dos dias de completa furia.",
+        "date": "2024-09-20",
+        "end_date": "2024-09-22",
+        "location": "Madrid",
+        "capacity": 450,
+        "artists": [
+            9,
+            10,
+            11,
+            12,
+            13,
+            14
+        ]
+    }
+},
+{
+    "model": "eventos.event",
+    "pk": 5,
+    "fields": {
+        "name": "The Childish Behaviour",
+        "description": "Ultimos conciertos de la gira de A House In Nebraska de Ethel Cain",
+        "date": "2024-12-21",
+        "end_date": null,
+        "location": "Barcelona",
+        "capacity": 2600,
+        "artists": [
+            15
+        ]
+    }
+},
+{
+    "model": "eventos.event",
+    "pk": 6,
+    "fields": {
+        "name": "Biznaga vs Camellos",
+        "description": "Batalla de amplis en la sala Wurlitzer",
+        "date": "2024-10-02",
+        "end_date": null,
+        "location": "Madrid",
+        "capacity": 800,
+        "artists": [
+            5,
+            16
+        ]
+    }
+},
+{
+    "model": "eventos.event",
+    "pk": 7,
+    "fields": {
+        "name": "Cafe Sabor a Soul",
+        "description": "Concierto de soul en la cafetería La Cuerda Rota",
+        "date": "2024-07-24",
+        "end_date": null,
+        "location": "Segovia",
+        "capacity": 6,
+        "artists": [
+            17
+        ]
+    }
+},
+{
+    "model": "eventos.assistants",
+    "pk": 1,
+    "fields": {
+        "user": 3,
+        "event": 3
+    }
+},
+{
+    "model": "eventos.assistants",
+    "pk": 2,
+    "fields": {
+        "user": 1,
+        "event": 6
+    }
+},
+{
+    "model": "eventos.assistants",
+    "pk": 3,
+    "fields": {
+        "user": 2,
+        "event": 2
+    }
+},
+{
+    "model": "eventos.assistants",
+    "pk": 4,
+    "fields": {
+        "user": 1,
+        "event": 3
+    }
+},
+{
+    "model": "eventos.assistants",
+    "pk": 5,
+    "fields": {
+        "user": 1,
+        "event": 3
+    }
+},
+{
+    "model": "eventos.assistants",
+    "pk": 6,
+    "fields": {
+        "user": 1,
+        "event": 7
+    }
+},
+{
+    "model": "eventos.assistants",
+    "pk": 7,
+    "fields": {
+        "user": 2,
+        "event": 7
+    }
+},
+{
+    "model": "eventos.assistants",
+    "pk": 8,
+    "fields": {
+        "user": 2,
+        "event": 7
+    }
+},
+{
+    "model": "eventos.assistants",
+    "pk": 9,
+    "fields": {
+        "user": 3,
+        "event": 7
+    }
+},
+{
+    "model": "eventos.assistants",
+    "pk": 10,
+    "fields": {
+        "user": 3,
+        "event": 7
+    }
+},
+{
+    "model": "eventos.assistants",
+    "pk": 11,
+    "fields": {
+        "user": 3,
+        "event": 7
+    }
+},
+{
+    "model": "eventos.assistants",
+    "pk": 17,
+    "fields": {
+        "user": 1,
+        "event": 1
+    }
+},
+{
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+        "name": "Alvaro",
+        "lastname": "Escudero",
+        "birth_date": "1997-12-30",
+        "mail": "alvaro.ture@gmail.com",
+        "phone": "666653850"
+    }
+},
+{
+    "model": "users.user",
+    "pk": 2,
+    "fields": {
+        "name": "Elena",
+        "lastname": "Sánchez",
+        "birth_date": "1996-02-14",
+        "mail": "elena.sanchez@example.com",
+        "phone": "2233445566"
+    }
+},
+{
+    "model": "users.user",
+    "pk": 3,
+    "fields": {
+        "name": "Carmen",
+        "lastname": "Díaz",
+        "birth_date": "1982-04-02",
+        "mail": "carmen.diaz@example.com",
+        "phone": "9988776655"
+    }
+},
+{
+    "model": "users.user",
+    "pk": 4,
+    "fields": {
+        "name": "Carlos",
+        "lastname": "López",
+        "birth_date": "2000-01-10",
+        "mail": "carlos.lopez@example.com",
+        "phone": "1122334455"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+        "action_time": "2024-06-15T09:16:31.713Z",
+        "user": [
+            "alvaro"
+        ],
+        "content_type": [
+            "users",
+            "user"
+        ],
+        "object_id": "1",
+        "object_repr": "Alvao-Escudero",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Phone\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+        "action_time": "2024-06-15T09:19:24.613Z",
+        "user": [
+            "alvaro"
+        ],
+        "content_type": [
+            "eventos",
+            "assistants"
+        ],
+        "object_id": "1",
+        "object_repr": "Carmen entrada para SWEAT",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+        "action_time": "2024-06-15T09:19:31.392Z",
+        "user": [
+            "alvaro"
+        ],
+        "content_type": [
+            "eventos",
+            "assistants"
+        ],
+        "object_id": "1",
+        "object_repr": "Carmen entrada para SWEAT",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+        "action_time": "2024-06-15T09:19:48.288Z",
+        "user": [
+            "alvaro"
+        ],
+        "content_type": [
+            "eventos",
+            "assistants"
+        ],
+        "object_id": "2",
+        "object_repr": "Alvao entrada para Biznaga vs Camellos",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 5,
+    "fields": {
+        "action_time": "2024-06-15T09:38:29.836Z",
+        "user": [
+            "alvaro"
+        ],
+        "content_type": [
+            "eventos",
+            "assistants"
+        ],
+        "object_id": "3",
+        "object_repr": "Alvao entrada para SWEAT",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 6,
+    "fields": {
+        "action_time": "2024-06-15T09:38:37.108Z",
+        "user": [
+            "alvaro"
+        ],
+        "content_type": [
+            "eventos",
+            "assistants"
+        ],
+        "object_id": "3",
+        "object_repr": "Elena entrada para Concierto de Camellos en Sala Barceló",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"User\", \"Event\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 7,
+    "fields": {
+        "action_time": "2024-06-15T09:38:48.285Z",
+        "user": [
+            "alvaro"
+        ],
+        "content_type": [
+            "eventos",
+            "assistants"
+        ],
+        "object_id": "4",
+        "object_repr": "Alvao entrada para SWEAT",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 8,
+    "fields": {
+        "action_time": "2024-06-15T09:38:52.314Z",
+        "user": [
+            "alvaro"
+        ],
+        "content_type": [
+            "eventos",
+            "assistants"
+        ],
+        "object_id": "5",
+        "object_repr": "Alvao entrada para SWEAT",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 9,
+    "fields": {
+        "action_time": "2024-06-15T09:55:14.905Z",
+        "user": [
+            "alvaro"
+        ],
+        "content_type": [
+            "users",
+            "user"
+        ],
+        "object_id": "1",
+        "object_repr": "Alvaro-Escudero",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 10,
+    "fields": {
+        "action_time": "2024-06-15T09:55:17.526Z",
+        "user": [
+            "alvaro"
+        ],
+        "content_type": [
+            "users",
+            "user"
+        ],
+        "object_id": "1",
+        "object_repr": "Alvaro-Escudero",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 11,
+    "fields": {
+        "action_time": "2024-06-15T10:13:55.050Z",
+        "user": [
+            "alvaro"
+        ],
+        "content_type": [
+            "authtoken",
+            "tokenproxy"
+        ],
+        "object_id": "1",
+        "object_repr": "dbe97075efbf96d5f59018699730f74e50e5c576",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 12,
+    "fields": {
+        "action_time": "2024-06-15T10:14:14.773Z",
+        "user": [
+            "alvaro"
+        ],
+        "content_type": [
+            "authtoken",
+            "tokenproxy"
+        ],
+        "object_id": "1",
+        "object_repr": "dbe97075efbf96d5f59018699730f74e50e5c576",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 13,
+    "fields": {
+        "action_time": "2024-06-15T10:30:00.532Z",
+        "user": [
+            "alvaro"
+        ],
+        "content_type": [
+            "eventos",
+            "artist"
+        ],
+        "object_id": "17",
+        "object_repr": "Los Arethas",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 14,
+    "fields": {
+        "action_time": "2024-06-15T10:30:04.235Z",
+        "user": [
+            "alvaro"
+        ],
+        "content_type": [
+            "eventos",
+            "event"
+        ],
+        "object_id": "7",
+        "object_repr": "Cafe Sabor a Soul",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 15,
+    "fields": {
+        "action_time": "2024-06-15T10:30:11.613Z",
+        "user": [
+            "alvaro"
+        ],
+        "content_type": [
+            "eventos",
+            "assistants"
+        ],
+        "object_id": "6",
+        "object_repr": "Alvaro entrada para Cafe Sabor a Soul",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 16,
+    "fields": {
+        "action_time": "2024-06-15T10:30:25.207Z",
+        "user": [
+            "alvaro"
+        ],
+        "content_type": [
+            "eventos",
+            "assistants"
+        ],
+        "object_id": "7",
+        "object_repr": "Elena entrada para Cafe Sabor a Soul",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 17,
+    "fields": {
+        "action_time": "2024-06-15T10:30:28.578Z",
+        "user": [
+            "alvaro"
+        ],
+        "content_type": [
+            "eventos",
+            "assistants"
+        ],
+        "object_id": "8",
+        "object_repr": "Elena entrada para Cafe Sabor a Soul",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 18,
+    "fields": {
+        "action_time": "2024-06-15T10:30:34.373Z",
+        "user": [
+            "alvaro"
+        ],
+        "content_type": [
+            "eventos",
+            "assistants"
+        ],
+        "object_id": "9",
+        "object_repr": "Carmen entrada para Cafe Sabor a Soul",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 19,
+    "fields": {
+        "action_time": "2024-06-15T10:30:38.683Z",
+        "user": [
+            "alvaro"
+        ],
+        "content_type": [
+            "eventos",
+            "assistants"
+        ],
+        "object_id": "10",
+        "object_repr": "Carmen entrada para Cafe Sabor a Soul",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 20,
+    "fields": {
+        "action_time": "2024-06-15T10:30:42.268Z",
+        "user": [
+            "alvaro"
+        ],
+        "content_type": [
+            "eventos",
+            "assistants"
+        ],
+        "object_id": "11",
+        "object_repr": "Carmen entrada para Cafe Sabor a Soul",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 21,
+    "fields": {
+        "action_time": "2024-06-15T10:31:10.668Z",
+        "user": [
+            "alvaro"
+        ],
+        "content_type": [
+            "eventos",
+            "assistants"
+        ],
+        "object_id": "12",
+        "object_repr": "Carlos entrada para Cafe Sabor a Soul",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 22,
+    "fields": {
+        "action_time": "2024-06-15T10:31:17.340Z",
+        "user": [
+            "alvaro"
+        ],
+        "content_type": [
+            "eventos",
+            "assistants"
+        ],
+        "object_id": "13",
+        "object_repr": "Carmen entrada para Cafe Sabor a Soul",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 23,
+    "fields": {
+        "action_time": "2024-06-15T10:31:21.033Z",
+        "user": [
+            "alvaro"
+        ],
+        "content_type": [
+            "eventos",
+            "assistants"
+        ],
+        "object_id": "14",
+        "object_repr": "Carlos entrada para Cafe Sabor a Soul",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 24,
+    "fields": {
+        "action_time": "2024-06-15T10:31:24.203Z",
+        "user": [
+            "alvaro"
+        ],
+        "content_type": [
+            "eventos",
+            "assistants"
+        ],
+        "object_id": "15",
+        "object_repr": "Alvaro entrada para Cafe Sabor a Soul",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 25,
+    "fields": {
+        "action_time": "2024-06-15T10:31:28.069Z",
+        "user": [
+            "alvaro"
+        ],
+        "content_type": [
+            "eventos",
+            "assistants"
+        ],
+        "object_id": "16",
+        "object_repr": "Carlos entrada para Cafe Sabor a Soul",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 26,
+    "fields": {
+        "action_time": "2024-06-15T10:32:01.505Z",
+        "user": [
+            "alvaro"
+        ],
+        "content_type": [
+            "eventos",
+            "assistants"
+        ],
+        "object_id": "16",
+        "object_repr": "Carlos entrada para Cafe Sabor a Soul",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 27,
+    "fields": {
+        "action_time": "2024-06-15T10:32:04.816Z",
+        "user": [
+            "alvaro"
+        ],
+        "content_type": [
+            "eventos",
+            "assistants"
+        ],
+        "object_id": "15",
+        "object_repr": "Alvaro entrada para Cafe Sabor a Soul",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 28,
+    "fields": {
+        "action_time": "2024-06-15T10:32:07.674Z",
+        "user": [
+            "alvaro"
+        ],
+        "content_type": [
+            "eventos",
+            "assistants"
+        ],
+        "object_id": "14",
+        "object_repr": "Carlos entrada para Cafe Sabor a Soul",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 29,
+    "fields": {
+        "action_time": "2024-06-15T10:32:11.353Z",
+        "user": [
+            "alvaro"
+        ],
+        "content_type": [
+            "eventos",
+            "assistants"
+        ],
+        "object_id": "13",
+        "object_repr": "Carmen entrada para Cafe Sabor a Soul",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 30,
+    "fields": {
+        "action_time": "2024-06-15T10:32:16.183Z",
+        "user": [
+            "alvaro"
+        ],
+        "content_type": [
+            "eventos",
+            "assistants"
+        ],
+        "object_id": "12",
+        "object_repr": "Carlos entrada para Cafe Sabor a Soul",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 31,
+    "fields": {
+        "action_time": "2024-06-15T10:37:02.381Z",
+        "user": [
+            "alvaro"
+        ],
+        "content_type": [
+            "eventos",
+            "event"
+        ],
+        "object_id": "7",
+        "object_repr": "Cafe Sabor a Soul",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Capacity\"]}}]"
+    }
+}
+]
